@@ -1,0 +1,44 @@
+#include <Arduino.h>
+
+const int pinBotao = 3;
+
+///***PROTOTIPOS DAS FUNCOES***
+void ligaLed(int);
+void desligaLed(int);
+void piscaLed(int,unsigned long);
+int somaDeDoisNumeros(int,int);
+
+void setup() 
+{
+  pinMode(2,OUTPUT);
+  Serial.begin(9600);///***FUNCAO QUE INICIA A COMUNICACAO COM SERIAL,PLACA E COMPUTADOR***
+}
+
+void loop() 
+{
+ piscaLed(2,100); ///***PISCA O LED DE ACORDO COM O PINO***
+ int resultadoDaSoma = somaDeDoisNumeros(4,8); ///***A SOMA***
+ Serial.println(resultadoDaSoma);
+}
+ void ligaLed(int pin)
+ {
+   digitalWrite(pin,HIGH);///***LIGA O LED***
+ }
+
+ void desligaLed(int pin)///***ARMAZENA NUMEROS INTEIROS***
+ {
+   digitalWrite(pin, LOW);///***DESLIGA O LED***
+ }
+
+ void piscaLed(int pin, unsigned long tempo)///***PISCA O LED DE ACORDO COM O TEMPO DETERMINADO***
+ {
+   ligaLed(pin);
+   delay(tempo);///***ESPERAR /PARAR O TEMPO DE 1 SEGUNDO*** 
+   desligaLed(pin);
+   delay(tempo);
+ }
+  int somaDeDoisNumeros(int numeroA, int numeroB)///***DETERMINADOR DOS NUMEROS***
+  {
+    int resultado = numeroA + numeroB;
+    return resultado; ///***RETORNA O RESULTADO***
+  }
